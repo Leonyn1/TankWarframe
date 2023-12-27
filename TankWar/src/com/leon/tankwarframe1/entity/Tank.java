@@ -3,6 +3,8 @@ package com.leon.tankwarframe1.entity;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
+import java.awt.*;
+
 /**
  * Description
  * <p>Create Time ：2023/12/27 10:24</p>
@@ -14,6 +16,7 @@ public class Tank {
     private int y;
     private TankDirect direct;
     private TankType type;
+    private Color color;
 
 
     public Tank(int x, int y, TankDirect direct) {
@@ -52,5 +55,13 @@ public class Tank {
 
     public void setType(TankType type) {
         this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
