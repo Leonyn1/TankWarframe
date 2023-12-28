@@ -4,6 +4,7 @@ import com.leon.tankwarframe1.constant.TankAttribute;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -12,7 +13,7 @@ import java.awt.*;
  *
  * @author ：Leon
  */
-public class Tank {
+public class Tank extends BasePanelObject{
     private int x;
     private int y;
     private TankDirect direct;
@@ -21,10 +22,35 @@ public class Tank {
     private int speed = TankAttribute.DEFAULT_SPEED;
 
 
-    public Tank(int x, int y, TankDirect direct) {
+    public Tank(int x, int y, TankDirect direct, JPanel panel) {
+        super(panel);
         this.x = x;
         this.y = y;
         this.direct = direct;
+    }
+
+    public Bullet shoot() {
+        int x = this.x;
+        int y = this.y;
+        switch (this.direct) {
+            case UP:
+                x += 25;
+                break;
+            case DOWN:
+                x += 25;
+                y += 70;
+                break;
+            case LEFT:
+                y += 25;
+                break;
+            case RIGHT:
+                x += 70;
+                y += 25;
+                break;
+        }
+        Bullet bullet = new Bullet(x, y, this.direct, this.getPanel());
+        new Thread(bullet).start();
+        return bullet;
     }
 
     public int getX() {

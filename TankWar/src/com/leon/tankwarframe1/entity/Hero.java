@@ -4,6 +4,7 @@ import com.leon.tankwarframe1.constant.TankAttribute;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -14,8 +15,8 @@ import java.awt.*;
  */
 public class Hero extends Tank {
 
-    public Hero(int x, int y, TankDirect direct) {
-        super(x, y, direct);
+    public Hero(int x, int y, TankDirect direct, JPanel panel) {
+        super(x, y, direct, panel);
         setType(TankType.HERO);
         setColor(Color.CYAN);
         setSpeed(TankAttribute.HERO_SPEED);

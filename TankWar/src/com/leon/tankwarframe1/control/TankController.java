@@ -1,9 +1,14 @@
 package com.leon.tankwarframe1.control;
 
 import com.leon.tankwarframe1.App;
+import com.leon.tankwarframe1.entity.Bullet;
 import com.leon.tankwarframe1.entity.Tank;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.view.AppPanel;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.util.Set;
 
 /**
  * Description
@@ -23,6 +28,31 @@ public class TankController {
             // 方向相同，进行移动
             doMove(keyCode, tank);
         }
+        doTurn(keyCode, tank);
+    }
+
+    public void shoot(Set<Bullet> bullets, Tank tank) {
+        bullets.add(tank.shoot());
+    }
+
+    public static boolean isAlive(Bullet bullet) {
+        boolean isAlive = true;
+        int x = bullet.getX();
+        int y = bullet.getY();
+        JPanel panel = bullet.getPanel();
+        if (x < 0 || y < 0) {
+            isAlive = false;
+        }
+        if (x > panel.getWidth() - bullet.getDiameter()) {
+            isAlive = false;
+        }
+        if (y > panel.getHeight() - bullet.getDiameter()) {
+            isAlive = false;
+        }
+        if (!isAlive) {
+            ((AppPanel) panel).getBullets().remove(bullet);
+        }
+        return isAlive;
     }
 
     private void doMove(int keyCode, Tank tank) {
@@ -38,6 +68,23 @@ public class TankController {
         } else if (keyCode == TankDirect.RIGHT.getValue()
                 && isOutBound(tank.getX() + tank.getSpeed(), tank.getY() )) {
             tank.setX(tank.getX() + tank.getSpeed());
+        }
+    }
+
+    private void doTurn(int keyCode, Tank tank) {
+        switch (keyCode) {
+            case KeyEvent.VK_UP:
+                tank.setDirect(TankDirect.UP);
+                break;
+            case KeyEvent.VK_DOWN:
+                tank.setDirect(TankDirect.DOWN);
+                break;
+            case KeyEvent.VK_LEFT:
+                tank.setDirect(TankDirect.LEFT);
+                break;
+            case KeyEvent.VK_RIGHT:
+                tank.setDirect(TankDirect.RIGHT);
+                break;
         }
     }
 

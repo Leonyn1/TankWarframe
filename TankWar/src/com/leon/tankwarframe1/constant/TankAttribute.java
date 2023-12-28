@@ -11,6 +11,10 @@ public class TankAttribute {
     public static final int DEFAULT_Y = 0;
     public static final TankDirect DEFAULT_DIRECT = TankDirect.UP;
     public static final int DEFAULT_SPEED = 1;
-    public static final int HERO_SPEED = 20;
+    public static final int HERO_SPEED = 10;
     public static final int ENEMY_SPEED = 10;
+    public static final int DEFAULT_BULLET_DIAMETER = 8;
+    public static final int DEFAULT_BULLET_SPEED = 20;
+    public static final int ENEMY_BULLET_SPEED = 10;
+    public static final int HERO_BULLET_SPEED = 10;
 }

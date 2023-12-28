@@ -4,6 +4,7 @@ import com.leon.tankwarframe1.constant.TankAttribute;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -14,8 +15,8 @@ import java.awt.*;
  */
 public class EnemyTank extends Tank {
 
-    public EnemyTank(int x, int y, TankDirect direct) {
-        super(x, y, direct);
+    public EnemyTank(int x, int y, TankDirect direct, JPanel panel) {
+        super(x, y, direct, panel);
         setType(TankType.ENEMY);
         setColor(Color.YELLOW);
         setSpeed(TankAttribute.ENEMY_SPEED);
