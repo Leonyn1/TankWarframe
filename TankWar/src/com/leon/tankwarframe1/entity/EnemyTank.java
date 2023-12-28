@@ -1,5 +1,6 @@
 package com.leon.tankwarframe1.entity;
 
+import com.leon.tankwarframe1.constant.TankAttribute;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
@@ -17,5 +18,6 @@ public class EnemyTank extends Tank {
         super(x, y, direct);
         setType(TankType.ENEMY);
         setColor(Color.YELLOW);
+        setSpeed(TankAttribute.ENEMY_SPEED);
     }
 }

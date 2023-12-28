@@ -5,6 +5,7 @@ import com.leon.tankwarframe1.entity.EnemyTank;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 /**
  * Description
@@ -19,6 +20,7 @@ public class TankWarframe extends JFrame {
     public TankWarframe(AppPanel appPanel) {
         setAppPanel(new AppPanel());
         this.add(appPanel);
+        this.addKeyListener(appPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setSize(1280, 720);

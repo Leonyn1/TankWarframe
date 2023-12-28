@@ -1,5 +1,6 @@
 package com.leon.tankwarframe1.entity;
 
+import com.leon.tankwarframe1.constant.TankAttribute;
 import com.leon.tankwarframe1.constant.TankDirect;
 import com.leon.tankwarframe1.constant.TankType;
 
@@ -17,6 +18,7 @@ public class Tank {
     private TankDirect direct;
     private TankType type;
     private Color color;
+    private int speed = TankAttribute.DEFAULT_SPEED;
 
 
     public Tank(int x, int y, TankDirect direct) {
@@ -63,5 +65,13 @@ public class Tank {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

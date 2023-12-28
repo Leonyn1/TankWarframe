@@ -7,5 +7,18 @@ package com.leon.tankwarframe1.constant;
  * @author ：Leon
  */
 public enum TankDirect {
-    UP, DOWN, LEFT, RIGHT;
+    UP(0x26),
+    DOWN(0x28),
+    LEFT(0x25),
+    RIGHT(0x27);
+
+    private final int value;
+
+    TankDirect(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
 }

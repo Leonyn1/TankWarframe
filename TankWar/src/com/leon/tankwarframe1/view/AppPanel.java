@@ -1,11 +1,14 @@
 package com.leon.tankwarframe1.view;
 
 import com.leon.tankwarframe1.constant.TankAttribute;
+import com.leon.tankwarframe1.constant.TankDirect;
+import com.leon.tankwarframe1.control.TankController;
 import com.leon.tankwarframe1.entity.Hero;
 import com.leon.tankwarframe1.entity.Tank;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Description
@@ -13,11 +16,13 @@ import java.awt.*;
  *
  * @author ：zhuwenlin
  */
-public class AppPanel extends JPanel {
-    private Hero hero;
+public class AppPanel extends JPanel implements KeyListener{
+    private Hero hero = null;
+    private final TankController controller;
 
     public AppPanel() {
         hero = new Hero(TankAttribute.DEFAULT_X, TankAttribute.DEFAULT_Y, TankAttribute.DEFAULT_DIRECT);
+        controller = new TankController(this);
     }
 
     @Override
@@ -81,5 +86,36 @@ public class AppPanel extends JPanel {
                 g.drawLine(x + 35, y + 25, x + 70, y + 25);
                 break;
         }
+    }
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        controller.tankMove(e.getKeyCode(), hero);
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP:
+                hero.setDirect(TankDirect.UP);
+                break;
+            case KeyEvent.VK_DOWN:
+                hero.setDirect(TankDirect.DOWN);
+                break;
+            case KeyEvent.VK_LEFT:
+                hero.setDirect(TankDirect.LEFT);
+                break;
+            case KeyEvent.VK_RIGHT:
+                hero.setDirect(TankDirect.RIGHT);
+                break;
+        }
+        this.repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
